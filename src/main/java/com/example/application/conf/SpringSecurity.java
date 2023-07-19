@@ -8,7 +8,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -40,7 +39,7 @@ public class SpringSecurity {
                         .permitAll()
                 )
                 .rememberMe(Customizer.withDefaults())
-                .logout((logout) -> logout.permitAll())
+                .logout(LogoutConfigurer::permitAll)
                 .exceptionHandling((exception) -> exception.accessDeniedPage("/access-denied"));
 
         return http.build();
