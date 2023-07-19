@@ -21,23 +21,6 @@ public class SpringSecurity {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        http.csrf().disable()
-//                .authorizeHttpRequests((requests) -> requests
-//                        .requestMatchers("/registration/**").permitAll()
-//                        .requestMatchers("/login/**").permitAll()
-//                        .requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")
-//                        .requestMatchers("/admin/**").hasAnyRole("ADMIN")
-//                        .anyRequest().authenticated()
-//                )
-//                .formLogin((form) -> form
-//                        .loginPage("/login")
-//                        .loginProcessingUrl("/login")
-//                        .defaultSuccessUrl("/user/")
-//                        .permitAll()
-//                )
-//                .logout(LogoutConfigurer::permitAll)
-//                .exceptionHandling().accessDeniedPage("/access-denied");
-//        return http.build();
         http
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/registration/**").permitAll()
